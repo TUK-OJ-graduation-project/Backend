@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "qna-django"
+version = "0.1.0"
+description = ""
+authors = ["K-charry <rlacofl1000@gmail.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [{include = "qna_django"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+django = "^4.1.7"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
