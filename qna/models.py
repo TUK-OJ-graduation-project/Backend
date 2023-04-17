@@ -11,7 +11,7 @@ class Question(models.Model):
     
 class Answer(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='answers')
-    # user = models.ForeignKey(User, on_delete=models.CASCADE)
+    # user = models.ForeignKey(User, on_delete=models.CASCADE) # 여기서 CASCADE 말고 SET_NULL 해주면 답변 삭제 못하도록 할 수 있음!!
     answer = models.TextField()
     is_adopted = models.BooleanField(default=False) # 답변 채택여부
     created_at = models.DateTimeField(auto_now_add=True)
@@ -26,12 +26,3 @@ class Answer(models.Model):
             # 해당 질문을 '해결됨'으로 업데이트 
             self.question.is_solved = True
             self.question.save()
-            
-    def delete(self, *args, **kwargs):
-        if self.is_adopted:
-            # 답변이 채택되면 삭제할 때 오류발생
-            raise ValueError("Cannot delete an accepted answer.")
-        else:
-            # 답변이 채택되지 않은 상태에서는 얼마든지 삭제 가능.
-            super().delete(*args, **kwargs)
-

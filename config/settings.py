@@ -91,9 +91,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'tukoj',
+        'USER': 'postgres',
+        'PASSWORD': '123456', #master pw는 tukoj로 했음..(각자 pgAdmin에서 정하는 비번인듯.)
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
