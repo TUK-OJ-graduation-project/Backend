@@ -1,10 +1,9 @@
 [tool.poetry]
-name = "oj-backend"
+name = "backend"
 version = "0.1.0"
 description = ""
 authors = ["K-charry <rlacofl1000@gmail.com>"]
 readme = "README.md"
-packages = [{include = "oj_backend"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
