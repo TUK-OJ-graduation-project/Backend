@@ -13,11 +13,12 @@ import os, json
 
 from django.core.exceptions import ImproperlyConfigured
 from pathlib import Path
+from .db_host import MY_DATABASES
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+DATABASES = MY_DATABASES
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
@@ -92,23 +93,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-''' DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'tukoj',
-        'USER': 'postgres',
-        'PASSWORD': '123456', #master pw는 tukoj로 했음..(각자 pgAdmin에서 정하는 비번인듯.)
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-} '''
 
-DATABASES = {
+''' DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
         "NAME": BASE_DIR / "db.sqlite3",
     }
-}
+} '''
 
 
 # Password validation
@@ -148,3 +139,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CORS_ORIGIN_WHITELIST = ['http://127.0.0.1:3000','http://localhost:3000']
 CORS_ALLOW_CREDENTIALS = True
+

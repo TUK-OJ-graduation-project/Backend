@@ -1,8 +1,21 @@
 from rest_framework import serializers
-from .models import Problem
+from .models import CodingProblem, OptionProblem, BlankProblem
 
-class ProblemSerializer(serializers.ModelSerializer):
+class CodingProblemSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Problem
-        fields = ['id', 'level', 'type', 'title', 'description', 'input_format', 'output_format', 'hint', 'language', 'created_at', 'updated_at', 'is_deleted']
+        model = CodingProblem
+        fields = ['id', 'level', 'type', 'title', 'description', 'language', 'input_format', 'output_format', 'hint', 'created_at', 'updated_at', 'is_deleted']
         read_only_fields = ['id', 'created_at', 'updated_at']
+
+class OptionProblemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OptionProblem
+        fields = ['id', 'level', 'type', 'title', 'description', 'language', 'is_correct', 'created_at', 'updated_at', 'is_deleted']
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
+class BlankProblemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = BlankProblem
+        fields = ['id', 'level', 'type', 'title', 'description', 'language', 'blank_answer', 'created_at', 'updated_at', 'is_deleted']
+        read_only_fields = ['id', 'created_at', 'updated_at']
+
