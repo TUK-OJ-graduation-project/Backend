@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     "solutions",
     "qna",
     "corsheaders",
+    "requests",
 ]
 
 MIDDLEWARE = [

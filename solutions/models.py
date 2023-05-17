@@ -8,6 +8,7 @@ class Solution(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_accepted = models.BooleanField(default=False) # 올바른 출력값(output)을 낸다면 True. (테스트케이스로 채점결과 반영)
+    execution_result = models.TextField(null=True, blank=True)
     
     # 다양한 문제 유형을 처리하기 위한 Generic foreign key
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)

@@ -1,8 +1,7 @@
-from django.urls import path, include
-from .views import SolutionList, SolutionDetail, SolutionCreateAPI
+from django.urls import path
+from .views import SolutionCreateAPI
 
 urlpatterns = [
-    path("list/", SolutionList.as_view()),
-    path("<int:pk>/", SolutionDetail.as_view()),
-    path("", SolutionCreateAPI.as_view())
+    path('submit/', SolutionCreateAPI.as_view(), name='submit_solution'),
+    path('submit/<int:pk>/', SolutionCreateAPI.as_view()),
 ]
