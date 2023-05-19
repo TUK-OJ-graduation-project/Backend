@@ -8,7 +8,7 @@ from .models import Solution
 from .serializers import SolutionSerializer
 
 class SolutionCreateAPI(APIView):
-    def post(self, request):
+    def post(self, request, format = None):
         serializer = SolutionSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
