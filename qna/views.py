@@ -54,8 +54,13 @@ class AnswerView(APIView):
             serializer = AnswerSerializer(answers, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
-    def post(self, request):
-        serializer = AnswerSerializer(data=request.data)
+    def post(self, request, question_id=None): # 질문글에 대한 id도 파라미터로 받아옴.
+        question = Question.objects.filter(id=question_id, is_deleted=False).first()
+        if not question:
+            return Response({'error': 'Question not found'}, status=status.HTTP_404_NOT_FOUND)
+        data = request.data.copy() # 요청 데이터의 변경 가능한 사본 만듦.
+        data['question'] = question_id
+        serializer = AnswerSerializ er(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
