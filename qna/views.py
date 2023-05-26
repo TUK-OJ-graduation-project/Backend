@@ -60,7 +60,7 @@ class AnswerView(APIView):
             return Response({'error': 'Question not found'}, status=status.HTTP_404_NOT_FOUND)
         data = request.data.copy() # 요청 데이터의 변경 가능한 사본 만듦.
         data['question'] = question_id
-        serializer = AnswerSerializ er(data=request.data)
+        serializer = AnswerSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
